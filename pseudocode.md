@@ -1,30 +1,29 @@
 # QuickTake Reasoning Workflow
 
-### Step 1: Input Capture
-* Receive **Product Name** from user.
-* Check for any active "User Lenses" (e.g., Keto, Vegan, Gut Health).
+### Step 1: Input Detection
+* Receive user input (String).
+* **Determine Input Type**:
+    * **IF** input matches a product pattern -> **Mode: Product Retrieval**
+    * **ELSE** -> **Mode: Ingredient Parsing**
 
-### Step 2: Product Profile Retrieval
-* Match the input name against the internal knowledge base.
-* Identify "Signature Markers" (e.g., specific sweeteners, protein sources, or degree of processing).
+### Step 2: Profile Extraction
+* **If Mode: Product Retrieval**: Fetch profile from knowledge base (e.g., "Tropicana Orange Juice" -> High Sugar, Vitamin C).
+* **If Mode: Ingredient Parsing**: Scan text for "Signature Markers" (e.g., "Carrageenan" -> Digestive Irritant).
 
 ### Step 3: Intent Inference (Sense-Making)
-* Identify the product's primary category.
-* **Assign** a dominant reasoning lens based on that category.
-* *Logic*: If the product is a "Breakfast Cereal," the system defaults to the "Sugar/Satiety" lens as the primary weight.
+* **Assign** a dominant reasoning lens based on the category or the highest-weight ingredient.
+* *Example*: If a list contains 5+ stabilizers, the system defaults to a "Processing Lens" even if macros are "clean."
 
 ### Step 4: Synthesis (Decision Compression)
-* Generate the **Quick Take** (The bottom-line conclusion).
-* Define the **Pivot** (The core "Why").
-* Identify the **Tradeoff** (The necessary nuance).
-* Identify the **Uncertainty** (The gray area).
+* Generate the **Quick Take** conclusion.
+* Define the **Pivot** (The "Why").
+* Identify the **Tradeoff** and **Uncertainty**.
 
 ### Step 5: UI State Management
-* **Check**: Is there an existing UI component visible?
-* **If YES**: Mutate the specific fields within that component with a smooth transition.
-* **If NO**: Render a new specialized QuickTake UI payload.
+* **Check**: Is the UI already active?
+* **If YES**: Mutate the existing fields (Transition from old reasoning to new).
+* **If NO**: Render a new specialized QuickTake payload.
 
-### Step 6: Context Injection
-* If the user adds a specific goal (e.g., "I have high blood pressure"):
-* **Loop back to Step 3** to re-calculate weights.
-* Update the existing UI with the new reasoning without losing the product profile.
+### Step 6: Lens Refinement
+* Wait for optional user context (e.g., "Low Sodium").
+* **Loop to Step 3**: Re-reason the *same data* (Name or List) through the new lens and update the UI.
