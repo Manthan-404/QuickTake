@@ -1,6 +1,6 @@
 # QuickTake: Intelligence-Driven Product & Label Synthesis
 
-QuickTake is a Generative UI prototype designed to eliminate the friction of nutritional decision-making. Unlike traditional apps that require manual data entry or complex interpretation, QuickTake accepts either a **Product Name** or a **Raw Ingredient List** to deliver immediate, high-level reasoning.
+QuickTake is a Generative UI prototype designed to eliminate the friction of nutritional decision-making. Unlike traditional apps that require manual data entry or complex interpretation, QuickTake accepts either a **Product Name** or a **Raw Ingredient List** (**NOTE**: Not an image of the same) to deliver immediate, high-level reasoning.
 
 The goal is **Decision Compression**. QuickTake identifies the core health impact of an item and applies a specialized reasoning lens, cutting through marketing fluff and technical jargon so users can make an informed choice in seconds.
 
